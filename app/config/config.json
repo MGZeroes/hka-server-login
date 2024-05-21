@@ -1,0 +1,20 @@
+{
+  "server": {
+    "addr": ":8080",
+
+    "enableTLS": false,
+    "tls": {
+      "certificate": "server.crt",
+      "key": "server.key"
+    }
+  },
+
+  "ldap": {
+    "host": "ldap://ec2-3-76-166-238.eu-central-1.compute.amazonaws.com",
+    "port": 8389,
+
+    "baseDN": "dc=hs-karlsruhe,dc=de",
+    "userDN": "ou=HS Users,ou=HS,dc=ads,dc=hs-karlsruhe,dc=de",
+    "userKey": "uid"
+  }
+}
