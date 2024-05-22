@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  hka-server-login:
+    image: hka-server-login:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app/config:/root/config
+    environment:
+      - CONFIG_PATH=/root/config/config.json
+    restart: always
+
+networks:
+  default:
+    driver: bridge

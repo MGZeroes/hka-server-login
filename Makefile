@@ -26,18 +26,22 @@ endif
 all: build
 
 build:
-	@echo "Building the Go application..."
+	@echo "Building application..."
 	@$(MKDIR)
 	@cd $(APP_DIR) && go build -o ..$(SEP)$(BUILD_DIR)$(SEP)$(APP_NAME)$(EXE) ./cmd/main
 
 run: build
-	@echo "Running the Go application..."
+	@echo "Running application..."
 	@$(BUILD_DIR)$(SEP)$(APP_NAME)$(EXE) --configPath "./app/config/config.json"
 
 clean:
 	@echo "Cleaning up..."
 	@go clean
 	@$(RMDIR)
+
+test:
+	@echo "Running tests..."
+	@cd $(APP_DIR) && go test ./...
 
 docker-build:
 	@echo "Building the Docker image..."
