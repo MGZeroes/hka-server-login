@@ -31,10 +31,11 @@ func TestSearchUser(t *testing.T) {
 	}
 
 	// Create a config object
-	cnf := &config.Config{
-		LDAPServer: "ldap.example.com",
-		LDAPPort:   389,
-		UserDN:     "ou=users,dc=example,dc=com",
+	cnf := config.LdapConfig{
+		Host:    "ldap.example.com",
+		Port:    389,
+		UserDN:  "ou=users,dc=example,dc=com",
+		UserKey: "uid",
 	}
 
 	creds := dto.Credentials{
