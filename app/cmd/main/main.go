@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"github.com/labstack/echo/v4"
 	"hka-server-login/bootstrap"
 	"log"
 )
@@ -12,8 +11,6 @@ var configPath = flag.String("configPath", ".\\config\\config.json", "Sets absol
 func main() {
 	flag.Parse()
 
-	var _ = echo.CONNECT
-
 	cfg, err := bootstrap.LoadConfig(*configPath)
 
 	if err != nil {
@@ -21,10 +18,6 @@ func main() {
 	}
 
 	server := bootstrap.NewServer(*cfg)
-
-	//ldapEndpoint := endpoint.NewLdapEndpoint(cfg)
-	//server.AddEndpoint(endpoint.CHECK_CREDENTIALS, ldapEndpoint.CheckCredentials)
 	server.InitLdapEndpoints()
-
 	server.Start()
 }
